@@ -21,7 +21,6 @@ public class Subscription {
     private long channelId;
     private String name;
     private String description;
-    //private String appLinkIntentUri;
     private int channelLogo;
 
     /**

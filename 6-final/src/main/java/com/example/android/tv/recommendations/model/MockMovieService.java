@@ -13,9 +13,20 @@
  */
 package com.example.android.tv.recommendations.model;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
+
 import com.example.android.tv.recommendations.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -79,6 +90,27 @@ public final class MockMovieService {
     private static List<Movie> createMovieList() {
         List<Movie> list = new ArrayList<>();
 
+        /*
+        https://api.themoviedb.org/3/trending/movie/week?api_key=3eac9721452d5839bfc882cc266d5f8a
+        list.add(buildMovieInfo("category",
+                "Ford v Ferrari",
+                "American car designer Carroll Shelby and the British-born driver Ken Miles work together to battle corporate interference, the laws of physics, and their own personal demons to build a revolutionary race car for Ford Motor Company and take on the dominating race cars of Enzo Ferrari at the 24 Hours of Le Mans in France in 1966.",
+                "https://image.tmdb.org/t/p/w500/6ApDtO7xaWAfPqfi2IARXIzj8QS.jpg",
+                "https://image.tmdb.org/t/p/w500/n3UanIvmnBlH531pykuzNs4LbH6.jpg"));
+        */
+
+        list.add(buildMovieInfo("category",
+                "Anne with an E",
+                "S01E01 - Ser jovem é ter esperança",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/6718810/1_iphone.jpg",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/6718810/1_iphone.jpg"));
+
+        list.add(buildMovieInfo("category",
+                "Tom Clancy's Jack Ryan",
+                "S02E02 - Tertia Optio",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/7347095/1_iphone.jpg",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/7347095/1_iphone.jpg"));
+
         list.add(buildMovieInfo("category",
                 "All American (2018)",
                 "S02E11 - The Crossroads",
@@ -90,6 +122,30 @@ public final class MockMovieService {
                 "S23E10 - Christmas Snow",
                 "https://dg31sz3gwrwan.cloudfront.net/screen/7461511/1_iphone.jpg",
                 "https://dg31sz3gwrwan.cloudfront.net/screen/7461511/1_iphone.jpg"));
+
+        list.add(buildMovieInfo("category",
+                "Young Sheldon",
+                "S03E09 - Um convite para festa, futebol com uva e uma galinha doméstica",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/7456833/1_iphone.jpg",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/7456833/1_iphone.jpg"));
+
+        list.add(buildMovieInfo("category",
+                "The Flash (2014)",
+                "S04E01 - Flash renascido",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/6124789/1_iphone.jpg",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/6124789/1_iphone.jpg"));
+
+        list.add(buildMovieInfo("category",
+                "Dragon Ball Super",
+                "S01E11 - Vamos Continuar, Lorde Bills! Como esta a Batalha Dos Deuses!",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/5341605/1_iphone.jpg",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/5341605/1_iphone.jpg"));
+
+        list.add(buildMovieInfo("category",
+                "The Man in the High Castle",
+                "S03E01 - Agora, mais do que nunca, nos importamos com você",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/6768101/1_iphone.jpg",
+                "https://dg31sz3gwrwan.cloudfront.net/screen/6768101/1_iphone.jpg"));
 
         return list;
     }
@@ -114,4 +170,5 @@ public final class MockMovieService {
     private static void incCount() {
         count++;
     }
+
 }
