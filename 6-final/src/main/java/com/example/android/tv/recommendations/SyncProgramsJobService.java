@@ -30,7 +30,6 @@ import com.example.android.tv.recommendations.model.MockDatabase;
 import com.example.android.tv.recommendations.model.MockMovieService;
 import com.example.android.tv.recommendations.model.Movie;
 import com.example.android.tv.recommendations.model.Subscription;
-import com.example.android.tv.recommendations.util.AppLinkHelper;
 import com.example.android.tv.recommendations.util.TvUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -198,8 +197,6 @@ public class SyncProgramsJobService extends JobService {
     @NonNull
     private PreviewProgram buildProgram(long channelId, Movie movie) {
         Uri posterArtUri = Uri.parse(movie.getCardImageUrl());
-        Uri appLinkUri = AppLinkHelper.buildPlaybackUri(channelId, movie.getId());
-        Uri previewVideoUri = Uri.parse(movie.getVideoUrl());
 
         PreviewProgram.Builder builder = new PreviewProgram.Builder();
         builder.setChannelId(channelId)
@@ -207,8 +204,7 @@ public class SyncProgramsJobService extends JobService {
                 .setTitle(movie.getTitle())
                 .setDescription(movie.getDescription())
                 .setPosterArtUri(posterArtUri)
-                .setPreviewVideoUri(previewVideoUri)
-                .setIntentUri(appLinkUri);
+                .setIntentUri(null);
         return builder.build();
     }
 

@@ -29,8 +29,6 @@ public class Movie implements Serializable {
     private String description;
     private String bgImageUrl;
     private String cardImageUrl;
-    private String videoUrl;
-    private String studio;
     private String category;
     // Program id / Watch Next id returned from the TV Provider.
     private long programId;
@@ -78,22 +76,6 @@ public class Movie implements Serializable {
         this.description = description;
     }
 
-    public String getStudio() {
-        return studio;
-    }
-
-    public void setStudio(String studio) {
-        this.studio = studio;
-    }
-
-    public String getVideoUrl() {
-        return videoUrl;
-    }
-
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
-
     public String getBackgroundImageUrl() {
         return bgImageUrl;
     }
@@ -131,9 +113,6 @@ public class Movie implements Serializable {
                 + '\''
                 + ", title='"
                 + title
-                + '\''
-                + ", videoUrl='"
-                + videoUrl
                 + '\''
                 + ", backgroundImageUrl='"
                 + bgImageUrl

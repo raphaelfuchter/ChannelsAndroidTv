@@ -13,29 +13,32 @@
  */
 package com.example.android.tv.recommendations.model;
 
-/** Contains the data about a channel that will be displayed on the launcher. */
+/**
+ * Contains the data about a channel that will be displayed on the launcher.
+ */
 public class Subscription {
 
     private long channelId;
     private String name;
     private String description;
-    private String appLinkIntentUri;
+    //private String appLinkIntentUri;
     private int channelLogo;
 
-    /** Constructor for Gson to use. */
-    public Subscription() {}
+    /**
+     * Constructor for Gson to use.
+     */
+    public Subscription() {
 
-    private Subscription(
-            String name, String description, String appLinkIntentUri, int channelLogo) {
+    }
+
+    private Subscription(String name, String description, int channelLogo) {
         this.name = name;
         this.description = description;
-        this.appLinkIntentUri = appLinkIntentUri;
         this.channelLogo = channelLogo;
     }
 
-    public static Subscription createSubscription(
-            String name, String description, String appLinkIntentUri, int channelLogo) {
-        return new Subscription(name, description, appLinkIntentUri, channelLogo);
+    public static Subscription createSubscription(String name, String description, int channelLogo) {
+        return new Subscription(name, description, channelLogo);
     }
 
     public long getChannelId() {
@@ -52,14 +55,6 @@ public class Subscription {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAppLinkIntentUri() {
-        return appLinkIntentUri;
-    }
-
-    public void setAppLinkIntentUri(String appLinkIntentUri) {
-        this.appLinkIntentUri = appLinkIntentUri;
     }
 
     public String getDescription() {

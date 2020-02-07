@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_instructions" />
+        android:text="@string/to_watch" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:id="@+id/subscribe_trending_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/subscribe" />
+                    android:text="@string/trending" />
 
             </LinearLayout>
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="27dp"
-                android:text="@string/trending_videos_description"
+                android:text="@string/trending_description"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
@@ -87,7 +87,7 @@
                     android:id="@+id/subscribe_towatch_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/subscribe" />
+                    android:text="@string/to_watch" />
 
             </LinearLayout>
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="27dp"
-                android:text="@string/tv_shows_description"
+                android:text="@string/to_watch_description"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>

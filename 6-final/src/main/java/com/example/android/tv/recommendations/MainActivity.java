@@ -47,10 +47,10 @@ public class MainActivity extends Activity {
         Button mTrendingSubscribeButton = (Button) findViewById(R.id.subscribe_trending_button);
         Button mToWatchSubscribeButton = (Button) findViewById(R.id.subscribe_towatch_button);
 
-        final Subscription trendingSubscription = MockDatabase.getTvShowSubscription(getApplicationContext());
+        final Subscription trendingSubscription = MockDatabase.getTrendingSubscription(getApplicationContext());
         setupButtonState(mTrendingSubscribeButton, trendingSubscription);
 
-        final Subscription toWatchSubscription = MockDatabase.getVideoSubscription(getApplicationContext());
+        final Subscription toWatchSubscription = MockDatabase.getToWatchSubscription(getApplicationContext());
         setupButtonState(mToWatchSubscribeButton, toWatchSubscription);
 
         TvUtil.scheduleSyncingChannel(this);

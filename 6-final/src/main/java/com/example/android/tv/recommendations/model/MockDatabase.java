@@ -19,7 +19,6 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import com.example.android.tv.recommendations.R;
-import com.example.android.tv.recommendations.util.AppLinkHelper;
 import com.example.android.tv.recommendations.util.SharedPreferencesHelper;
 import java.util.Collections;
 import java.util.List;
@@ -37,12 +36,11 @@ public final class MockDatabase {
      * @param context used for accessing shared preferences.
      * @return a subscription with tv show data.
      */
-    public static Subscription getTvShowSubscription(Context context) {
-
+    public static Subscription getTrendingSubscription(Context context) {
         return findOrCreateSubscription(
                 context,
-                R.string.title_tv_shows,
-                R.string.tv_shows_description,
+                R.string.trending,
+                R.string.trending_description,
                 R.drawable.ic_video_library_blue_80dp);
     }
 
@@ -52,48 +50,23 @@ public final class MockDatabase {
      * @param context used for accessing shared preferences.
      * @return a subscription with your video data.
      */
-    public static Subscription getVideoSubscription(Context context) {
-
+    public static Subscription getToWatchSubscription(Context context) {
         return findOrCreateSubscription(
                 context,
-                R.string.your_videos,
-                R.string.your_videos_description,
+                R.string.to_watch,
+                R.string.to_watch_description,
                 R.drawable.ic_video_library_blue_80dp);
     }
 
-    /**
-     * Returns a subscription to mock content representing cat videos.
-     *
-     * @param context used for accessing shared preferences.
-     * @return a subscription with cat videos.
-     */
-    public static Subscription getCatVideosSubscription(Context context) {
-
-        return findOrCreateSubscription(
-                context,
-                R.string.cat_videos,
-                R.string.cat_videos_description,
-                R.drawable.ic_movie_blue_80dp);
-    }
-
-    private static Subscription findOrCreateSubscription(
-            Context context,
-            @StringRes int titleResource,
-            @StringRes int descriptionResource,
-            @DrawableRes int logoResource) {
-        // See if we have already created the channel in the TV Provider.
-        String title = context.getString(titleResource);
+    private static Subscription findOrCreateSubscription(Context context, @StringRes int titleResource, @StringRes int descriptionResource, @DrawableRes int logoResource) {
+        String title = context.getString(titleResource);// See if we have already created the channel in the TV Provider.
 
         Subscription subscription = findSubscriptionByTitle(context, title);
         if (subscription != null) {
             return subscription;
         }
 
-        return Subscription.createSubscription(
-                title,
-                context.getString(descriptionResource),
-                AppLinkHelper.buildBrowseUri(title).toString(),
-                logoResource);
+        return Subscription.createSubscription(title, context.getString(descriptionResource), logoResource);
     }
 
     @Nullable

@@ -84,14 +84,11 @@ public class TvUtil {
             } while (cursor.moveToNext());
         }
 
-        // Create the channel since it has not been added to the TV Provider.
-        Uri appLinkIntentUri = Uri.parse(subscription.getAppLinkIntentUri());
-
         Channel.Builder builder = new Channel.Builder();
         builder.setType(TvContractCompat.Channels.TYPE_PREVIEW)
                 .setDisplayName(subscription.getName())
                 .setDescription(subscription.getDescription())
-                .setAppLinkIntentUri(appLinkIntentUri);
+                .setAppLinkIntentUri(null);
 
         Log.d(TAG, "Creating channel: " + subscription.getName());
         Uri channelUrl =
@@ -158,8 +155,7 @@ public class TvUtil {
         JobInfo.Builder builder = new JobInfo.Builder(1, componentName);
         builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
 
-        JobScheduler scheduler =
-                (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
 
         Log.d(TAG, "Scheduled channel creation.");
         scheduler.schedule(builder.build());
@@ -175,13 +171,9 @@ public class TvUtil {
     public static void scheduleSyncingProgramsForChannel(Context context, long channelId) {
         ComponentName componentName = new ComponentName(context, SyncProgramsJobService.class);
 
-        JobInfo.Builder builder =
-                new JobInfo.Builder(getJobIdForChannelId(channelId), componentName);
+        JobInfo.Builder builder = new JobInfo.Builder(getJobIdForChannelId(channelId), componentName);
 
-        JobInfo.TriggerContentUri triggerContentUri =
-                new JobInfo.TriggerContentUri(
-                        TvContractCompat.buildChannelUri(channelId),
-                        JobInfo.TriggerContentUri.FLAG_NOTIFY_FOR_DESCENDANTS);
+        JobInfo.TriggerContentUri triggerContentUri = new JobInfo.TriggerContentUri(TvContractCompat.buildChannelUri(channelId), JobInfo.TriggerContentUri.FLAG_NOTIFY_FOR_DESCENDANTS);
         builder.addTriggerContentUri(triggerContentUri);
         builder.setTriggerContentMaxDelay(0L);
         builder.setTriggerContentUpdateDelay(0L);
@@ -190,8 +182,7 @@ public class TvUtil {
         bundle.putLong(TvContractCompat.EXTRA_CHANNEL_ID, channelId);
         builder.setExtras(bundle);
 
-        JobScheduler scheduler =
-                (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         scheduler.cancel(getJobIdForChannelId(channelId));
         scheduler.schedule(builder.build());
     }
