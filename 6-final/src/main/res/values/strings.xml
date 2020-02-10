@@ -4,9 +4,7 @@
     <string name="canal_add">Canal adicionado</string>
     <string name="canal_nao_add">Canal não adicionado</string>
 
-    <string name="seriados">Seriados</string>
-    <string name="seriados_descricao">Seriados em Alta</string>
-    <string name="filmes">Filmes</string>
-    <string name="filmes_descricao">Filmes em Alta</string>
+    <string name="seriados">Em alta</string>
+    <string name="seriados_descricao">Em Alta</string>
 
 </resources>

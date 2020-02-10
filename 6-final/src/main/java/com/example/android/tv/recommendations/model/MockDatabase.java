@@ -44,20 +44,6 @@ public final class MockDatabase {
                 R.drawable.ic_video_library_blue_80dp);
     }
 
-    /**
-     * Returns a subscription to mock content representing your videos.
-     *
-     * @param context used for accessing shared preferences.
-     * @return a subscription with your video data.
-     */
-    public static Subscription getFilmesSubscription(Context context) {
-        return findOrCreateSubscription(
-                context,
-                R.string.filmes,
-                R.string.filmes_descricao,
-                R.drawable.ic_video_library_blue_80dp);
-    }
-
     private static Subscription findOrCreateSubscription(Context context, @StringRes int titleResource, @StringRes int descriptionResource, @DrawableRes int logoResource) {
         String title = context.getString(titleResource);// See if we have already created the channel in the TV Provider.
 

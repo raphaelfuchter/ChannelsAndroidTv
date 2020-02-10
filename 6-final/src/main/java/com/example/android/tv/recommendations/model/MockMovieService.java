@@ -19,6 +19,12 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.android.tv.recommendations.R;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,12 +33,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-/** Mocks gathering movies from an external source. */
+/**
+ * Mocks gathering movies from an external source.
+ */
 public final class MockMovieService {
 
     private static List<Movie> list;
@@ -53,14 +63,7 @@ public final class MockMovieService {
                         context.getString(R.string.seriados_descricao),
                         R.drawable.ic_video_library_blue_80dp);
 
-        String filmes = context.getString(R.string.filmes);
-        Subscription filmesSubscription =
-                Subscription.createSubscription(
-                        filmes,
-                        context.getString(R.string.filmes_descricao),
-                        R.drawable.ic_movie_blue_80dp);
-
-        return Arrays.asList(seriadosSubscription, filmesSubscription);
+        return Arrays.asList(seriadosSubscription);
     }
 
     /**
@@ -90,19 +93,36 @@ public final class MockMovieService {
     private static List<Movie> createMovieList() {
         List<Movie> list = new ArrayList<>();
 
-        /*
-        seriados:
-        https://api.themoviedb.org/3/trending/tv/week?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt
+        try {
+            String resultado = findJSONFromUrl("https://api.themoviedb.org/3/trending/all/week?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt");
 
-        filmes:
-        https://api.themoviedb.org/3/trending/movie/week?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt
-        */
+            JSONObject items = new JSONObject(resultado);
+            Iterator x = items.keys();
+            JSONArray jsonArray = new JSONArray();
 
-        list.add(buildMovieInfo("category",
-                "Ford v Ferrari",
-                "Durante a década de 1960, a Ford resolve entrar no ramo das corridas automobilísticas de forma que a empresa ganhe o prestígio e o glamour da concorrente Ferrari, campeoníssima em várias corridas. Para tanto, contrata o ex-piloto Carroll Shelby (Matt Damon) para chefiar a empreitada. Por mais que tenha carta branca para montar sua equipe, incluindo o piloto e engenheiro Ken Miles (Christian Bale), Shelby enfrenta problemas com a diretoria da Ford, especialmente pela mentalidade mais voltada para os negócios e a imagem da empresa do que propriamente em relação ao aspecto esportivo.",
-                "https://image.tmdb.org/t/p/w200/lKhF0QX724VS2QqBzSZ4KJif3Ny.jpg",
-                "https://image.tmdb.org/t/p/w200/lKhF0QX724VS2QqBzSZ4KJif3Ny.jpg"));
+            while (x.hasNext()) {
+                String key = (String) x.next();
+                if (key.equals("results")) {
+                    jsonArray.put(items.get(key));
+                }
+            }
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONArray a = jsonArray.getJSONArray(i);
+                for (int j = 0; j < a.length(); j++) {
+                    JSONObject result = a.getJSONObject(j);
+
+                    list.add(buildMovieInfo("category",
+                            result.getString("original_title"),
+                            result.getString("overview"),
+                            "https://image.tmdb.org/t/p/w500" + result.getString("poster_path"),
+                            "https://image.tmdb.org/t/p/w500" + result.getString("poster_path")));
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return list;
     }
@@ -128,4 +148,34 @@ public final class MockMovieService {
         count++;
     }
 
+    private static String findJSONFromUrl(String url) {
+        String result = "";
+        try {
+            URL urls = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) urls.openConnection();
+            conn.setReadTimeout(15000); //milliseconds
+            conn.setConnectTimeout(1500); // milliseconds
+            conn.setRequestMethod("GET");
+            conn.connect();
+
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.ISO_8859_1), 8);
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line).append("\n");
+                }
+                result = sb.toString();
+            } else {
+                return "error";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+
+        return result;
+    }
+
 }
+
