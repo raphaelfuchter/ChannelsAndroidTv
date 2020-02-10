@@ -44,14 +44,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button mTrendingSubscribeButton = (Button) findViewById(R.id.subscribe_trending_button);
-        Button mToWatchSubscribeButton = (Button) findViewById(R.id.subscribe_towatch_button);
+        Button mTrendingSubscribeButton = findViewById(R.id.subscribe_trending_button);
+        Button mToWatchSubscribeButton = findViewById(R.id.subscribe_towatch_button);
 
-        final Subscription trendingSubscription = MockDatabase.getTrendingSubscription(getApplicationContext());
-        setupButtonState(mTrendingSubscribeButton, trendingSubscription);
+        final Subscription seriadosSubscription = MockDatabase.getSeriadosSubscription(getApplicationContext());
+        setupButtonState(mTrendingSubscribeButton, seriadosSubscription);
 
-        final Subscription toWatchSubscription = MockDatabase.getToWatchSubscription(getApplicationContext());
-        setupButtonState(mToWatchSubscribeButton, toWatchSubscription);
+        final Subscription filmesSubscription = MockDatabase.getFilmesSubscription(getApplicationContext());
+        setupButtonState(mToWatchSubscribeButton, filmesSubscription);
 
         TvUtil.scheduleSyncingChannel(this);
     }
@@ -116,9 +116,9 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         // step 18 handle response
         if (resultCode == RESULT_OK) {
-            Toast.makeText(this, R.string.channel_added, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.canal_add, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, R.string.channel_not_added, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.canal_nao_add, Toast.LENGTH_LONG).show();
         }
     }
 }

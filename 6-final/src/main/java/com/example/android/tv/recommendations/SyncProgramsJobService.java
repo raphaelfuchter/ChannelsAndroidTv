@@ -200,7 +200,7 @@ public class SyncProgramsJobService extends JobService {
 
         PreviewProgram.Builder builder = new PreviewProgram.Builder();
         builder.setChannelId(channelId)
-                .setType(TvContractCompat.PreviewProgramColumns.TYPE_CLIP)
+                .setType(TvContractCompat.PreviewProgramColumns.TYPE_MOVIE)
                 .setTitle(movie.getTitle())
                 .setDescription(movie.getDescription())
                 .setPosterArtUri(posterArtUri)

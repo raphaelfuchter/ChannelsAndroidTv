@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/to_watch" />
+        android:text="@string/app_name" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,14 +46,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/trending"
+                    android:text="@string/seriados"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Button
                     android:id="@+id/subscribe_trending_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/trending" />
+                    android:text="@string/seriados" />
 
             </LinearLayout>
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="27dp"
-                android:text="@string/trending_description"
+                android:text="@string/seriados_descricao"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
@@ -80,14 +80,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/to_watch"
+                    android:text="@string/filmes"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Button
                     android:id="@+id/subscribe_towatch_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/to_watch" />
+                    android:text="@string/filmes" />
 
             </LinearLayout>
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="27dp"
-                android:text="@string/to_watch_description"
+                android:text="@string/filmes_descricao"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>

@@ -36,11 +36,11 @@ public final class MockDatabase {
      * @param context used for accessing shared preferences.
      * @return a subscription with tv show data.
      */
-    public static Subscription getTrendingSubscription(Context context) {
+    public static Subscription getSeriadosSubscription(Context context) {
         return findOrCreateSubscription(
                 context,
-                R.string.trending,
-                R.string.trending_description,
+                R.string.seriados,
+                R.string.seriados_descricao,
                 R.drawable.ic_video_library_blue_80dp);
     }
 
@@ -50,11 +50,11 @@ public final class MockDatabase {
      * @param context used for accessing shared preferences.
      * @return a subscription with your video data.
      */
-    public static Subscription getToWatchSubscription(Context context) {
+    public static Subscription getFilmesSubscription(Context context) {
         return findOrCreateSubscription(
                 context,
-                R.string.to_watch,
-                R.string.to_watch_description,
+                R.string.filmes,
+                R.string.filmes_descricao,
                 R.drawable.ic_video_library_blue_80dp);
     }
 

@@ -46,21 +46,21 @@ public final class MockMovieService {
      */
     public static List<Subscription> createUniversalSubscriptions(Context context) {
 
-        String toWatch = context.getString(R.string.to_watch);
-        Subscription toWatchSubscription =
+        String seriados = context.getString(R.string.seriados);
+        Subscription seriadosSubscription =
                 Subscription.createSubscription(
-                        toWatch,
-                        context.getString(R.string.to_watch_description),
+                        seriados,
+                        context.getString(R.string.seriados_descricao),
                         R.drawable.ic_video_library_blue_80dp);
 
-        String trending = context.getString(R.string.trending);
-        Subscription trendingSubscription =
+        String filmes = context.getString(R.string.filmes);
+        Subscription filmesSubscription =
                 Subscription.createSubscription(
-                        trending,
-                        context.getString(R.string.trending_description),
+                        filmes,
+                        context.getString(R.string.filmes_descricao),
                         R.drawable.ic_movie_blue_80dp);
 
-        return Arrays.asList(toWatchSubscription, trendingSubscription);
+        return Arrays.asList(seriadosSubscription, filmesSubscription);
     }
 
     /**
@@ -91,61 +91,18 @@ public final class MockMovieService {
         List<Movie> list = new ArrayList<>();
 
         /*
-        https://api.themoviedb.org/3/trending/movie/week?api_key=3eac9721452d5839bfc882cc266d5f8a
-        list.add(buildMovieInfo("category",
-                "Ford v Ferrari",
-                "American car designer Carroll Shelby and the British-born driver Ken Miles work together to battle corporate interference, the laws of physics, and their own personal demons to build a revolutionary race car for Ford Motor Company and take on the dominating race cars of Enzo Ferrari at the 24 Hours of Le Mans in France in 1966.",
-                "https://image.tmdb.org/t/p/w500/6ApDtO7xaWAfPqfi2IARXIzj8QS.jpg",
-                "https://image.tmdb.org/t/p/w500/n3UanIvmnBlH531pykuzNs4LbH6.jpg"));
+        seriados:
+        https://api.themoviedb.org/3/trending/tv/week?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt
+
+        filmes:
+        https://api.themoviedb.org/3/trending/movie/week?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt
         */
 
         list.add(buildMovieInfo("category",
-                "Anne with an E",
-                "S01E01 - Ser jovem é ter esperança",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/6718810/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/6718810/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "Tom Clancy's Jack Ryan",
-                "S02E02 - Tertia Optio",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7347095/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7347095/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "All American (2018)",
-                "S02E11 - The Crossroads",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7477831/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7477831/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "South Park",
-                "S23E10 - Christmas Snow",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7461511/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7461511/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "Young Sheldon",
-                "S03E09 - Um convite para festa, futebol com uva e uma galinha doméstica",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7456833/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/7456833/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "The Flash (2014)",
-                "S04E01 - Flash renascido",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/6124789/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/6124789/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "Dragon Ball Super",
-                "S01E11 - Vamos Continuar, Lorde Bills! Como esta a Batalha Dos Deuses!",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/5341605/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/5341605/1_iphone.jpg"));
-
-        list.add(buildMovieInfo("category",
-                "The Man in the High Castle",
-                "S03E01 - Agora, mais do que nunca, nos importamos com você",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/6768101/1_iphone.jpg",
-                "https://dg31sz3gwrwan.cloudfront.net/screen/6768101/1_iphone.jpg"));
+                "Ford v Ferrari",
+                "Durante a década de 1960, a Ford resolve entrar no ramo das corridas automobilísticas de forma que a empresa ganhe o prestígio e o glamour da concorrente Ferrari, campeoníssima em várias corridas. Para tanto, contrata o ex-piloto Carroll Shelby (Matt Damon) para chefiar a empreitada. Por mais que tenha carta branca para montar sua equipe, incluindo o piloto e engenheiro Ken Miles (Christian Bale), Shelby enfrenta problemas com a diretoria da Ford, especialmente pela mentalidade mais voltada para os negócios e a imagem da empresa do que propriamente em relação ao aspecto esportivo.",
+                "https://image.tmdb.org/t/p/w200/lKhF0QX724VS2QqBzSZ4KJif3Ny.jpg",
+                "https://image.tmdb.org/t/p/w200/lKhF0QX724VS2QqBzSZ4KJif3Ny.jpg"));
 
         return list;
     }

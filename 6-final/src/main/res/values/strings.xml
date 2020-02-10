@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">RF</string>
 
-    <string name="channel_added">Channel added</string>
-    <string name="channel_not_added">Channel not added</string>
+    <string name="canal_add">Canal adicionado</string>
+    <string name="canal_nao_add">Canal não adicionado</string>
 
-    <string name="trending">Trending</string>
-    <string name="trending_description">Trending Description</string>
-    <string name="to_watch">To Watch</string>
-    <string name="to_watch_description">To Watch Description</string>
+    <string name="seriados">Seriados</string>
+    <string name="seriados_descricao">Seriados em Alta</string>
+    <string name="filmes">Filmes</string>
+    <string name="filmes_descricao">Filmes em Alta</string>
 
 </resources>
