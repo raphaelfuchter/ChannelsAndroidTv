@@ -159,7 +159,7 @@ public final class MockMovieService {
             conn.connect();
 
             if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.ISO_8859_1), 8);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8), 8);
                 StringBuilder sb = new StringBuilder();
                 String line = null;
                 while ((line = reader.readLine()) != null) {
@@ -170,7 +170,6 @@ public final class MockMovieService {
                 return "error";
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return "error";
         }
 
