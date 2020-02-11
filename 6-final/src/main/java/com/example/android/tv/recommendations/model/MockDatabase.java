@@ -41,7 +41,7 @@ public final class MockDatabase {
                 context,
                 R.string.seriados,
                 R.string.seriados_descricao,
-                R.drawable.ic_video_library_blue_80dp);
+                R.drawable.ic_primary_green);
     }
 
     private static Subscription findOrCreateSubscription(Context context, @StringRes int titleResource, @StringRes int descriptionResource, @DrawableRes int logoResource) {

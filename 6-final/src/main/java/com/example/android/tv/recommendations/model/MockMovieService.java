@@ -61,7 +61,7 @@ public final class MockMovieService {
                 Subscription.createSubscription(
                         seriados,
                         context.getString(R.string.seriados_descricao),
-                        R.drawable.ic_video_library_blue_80dp);
+                        R.drawable.ic_primary_green);
 
         return Arrays.asList(seriadosSubscription);
     }
@@ -94,7 +94,7 @@ public final class MockMovieService {
         List<Movie> list = new ArrayList<>();
 
         try {
-            String resultado = findJSONFromUrl("https://api.themoviedb.org/3/trending/all/week?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt");
+            String resultado = findJSONFromUrl("https://api.themoviedb.org/3/trending/all/day?api_key=3eac9721452d5839bfc882cc266d5f8a&language=pt-BR&include_image_language=pt");
 
             JSONObject items = new JSONObject(resultado);
             Iterator x = items.keys();

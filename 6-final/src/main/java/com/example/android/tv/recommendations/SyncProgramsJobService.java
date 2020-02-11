@@ -204,6 +204,7 @@ public class SyncProgramsJobService extends JobService {
                 .setTitle(movie.getTitle())
                 .setDescription(movie.getDescription())
                 .setPosterArtUri(posterArtUri)
+                .setPosterArtAspectRatio(TvContractCompat.PreviewProgramColumns.ASPECT_RATIO_MOVIE_POSTER)
                 .setIntentUri(null);
         return builder.build();
     }

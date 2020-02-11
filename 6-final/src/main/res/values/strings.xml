@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">RF</string>
+    <string name="app_name">TMDb</string>
 
-    <string name="canal_add">Canal adicionado</string>
-    <string name="canal_nao_add">Canal não adicionado</string>
+    <string name="canal_add">Canal Adicionado</string>
+    <string name="canal_nao_add">Canal Não Adicionado</string>
 
-    <string name="seriados">Em alta</string>
+    <string name="seriados">Em Alta</string>
     <string name="seriados_descricao">Em Alta</string>
 
 </resources>
